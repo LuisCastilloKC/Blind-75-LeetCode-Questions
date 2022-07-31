@@ -34,3 +34,25 @@ function getUserName(input) {
     return userName
 }
 
+
+
+console.log(getUserName("@username"))
+console.log(getUserName("username"))
+console.log(getUserName("https://www.twitter.com/@username"))
+console.log(getUserName("https://www.twitter.com/username"))
+
+// Solution 2
+
+
+function getUserName(input) {
+    const splitted = input.split("/");
+
+    if (splitted.length > 1) {
+        input = splitted[splitted.length - 1];
+    }
+
+    const [firstLetter,] = input;
+    const userName = firstLetter === "@" ? input : `@${input}`;
+
+    return userName
+}
